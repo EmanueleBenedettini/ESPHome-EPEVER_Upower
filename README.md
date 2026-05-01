@@ -1,18 +1,38 @@
 # ESPHome-EPEVER_Upower
-Code and instructions for the integration of EPEVER Upower inverters in Home Assistant
 
+Code and instructions for the integration of EPEVER Upower inverters in Home Assistant.
 
-In upower.yaml change YOURAPIENCRIPTIONKEY(19), YOUROTAPASSWORD(22) and YOURPASSWORD(31) to match yours.
-The code is small enough to fit in an esp01_1M and still provide ota update capability.
+## Configuration
 
-I've included my board design made whit eagle, just go to a site like jlcpcb.com and upload the Gerber.zip file. 
-You'll need to solder some components:
-R5,R6: 3.3k, M1206
-R1,R2: 10k, M1206
-R4: 120, M1206
-U2: AMS1117-3.3, SOT229P700X180-4N
-Q1: 2N7002 N-Channel mosfet or similar, SOT23
-IC1: MAX485, SO08
-C1,C2: 100u 6mm diameter
+In `upower.yaml`, update the following values to match your setup:
 
-U1 is the ESP01 and in my case it didnt need to be soldered, it's just a tight fit
+- **Line 19**: `YOURAPIENCRYPTIONKEY` - Your API encryption key
+- **Line 22**: `YOUROTAPASSWORD` - Your OTA password
+- **Line 31**: `YOURPASSWORD` - Your device password
+
+## Firmware Size
+
+The code is optimized to fit on an ESP01_1M module while maintaining OTA update capability.
+
+## Board Design
+
+A custom PCB design is included (created with Eagle). To manufacture your board:
+
+1. Go to a site like [jlcpcb.com](https://jlcpcb.com)
+2. Upload the `Gerber.zip` file
+
+### Components to Solder
+
+| Designator | Value | Package |
+|---|---|---|
+| R5, R6 | 3.3kΩ | M1206 |
+| R1, R2 | 10kΩ | M1206 |
+| R4 | 120Ω | M1206 |
+| U2 | AMS1117-3.3 | SOT229P700X180-4N |
+| Q1 | 2N7002 N-Channel MOSFET | SOT23 |
+| IC1 | MAX485 | SO08 |
+| C1, C2 | 100µF | 6mm diameter |
+
+### Notes
+
+- **U1** (ESP01): In most cases, this does not need to be soldered. It should fit snugly in the socket.
